@@ -76,15 +76,23 @@ namespace RequiredNullableDemo.Controllers
         {
             // generate the list of all validation (error) messages
             var validationMessages = new List<string>();
-            if (employee.FirstName is null)
+            if (!employee.IsDepartmentIdSet)
+            {
+                validationMessages.Add("Department ID is required.");
+            }
+            if (!employee.IsFirstNameSet)
             {
                 validationMessages.Add("First Name is required.");
             }
-            if (employee.LastName is null)
+            if (!employee.IsLastNameSet)
             {
                 // An intentional bug: The validation of the last name doesn't work
 
                 //validationMessages.Add("Last Name is required.");
+            }
+            if (!employee.IsDateOfBirthSet)
+            {
+                validationMessages.Add("Date of Birth is required.");
             }
 
             // throw an exception if there is at least one validation message
