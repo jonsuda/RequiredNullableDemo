@@ -40,6 +40,8 @@ namespace RequiredNullableDemo.Data
             set => this.department = value;
         }
 
+        public bool IsDepartmentSet => this.department != null;
+
         public Employee Clone() =>
             new Employee(
                 this.DepartmentId,
