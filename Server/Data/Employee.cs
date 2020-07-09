@@ -35,7 +35,8 @@ namespace RequiredNullableDemo.Data
         public Department Department
         {
             get => this.department ??
-                throw new InvalidOperationException("Department not set.");
+                throw new InvalidOperationException(
+                    $"The value of {nameof(this.Department)} is not set.");
             set => this.department = value;
         }
 

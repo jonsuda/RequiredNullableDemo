@@ -51,7 +51,7 @@ namespace RequiredNullableDemo.Controllers
 
         private void ValidateDepartment(DepartmentRequest department)
         {
-            if (string.IsNullOrWhiteSpace(department.Name))
+            if (department.Name == null)
             {
                 throw new ValidationException("Name is required.");
             }
