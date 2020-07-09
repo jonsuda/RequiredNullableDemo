@@ -102,9 +102,9 @@ namespace RequiredNullableDemo
         private static string ReadBoolean(string question)
         {
             bool? value;
+            Console.WriteLine($"{question} [Y/N]");
             do
             {
-                Console.WriteLine($"{question} [Y/N]");
                 Console.Write("> ");
                 value = Console.ReadLine().ToUpper() switch
                 {
