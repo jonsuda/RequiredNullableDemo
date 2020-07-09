@@ -71,21 +71,21 @@ namespace RequiredNullableDemo.Controllers
         {
             // generate the list of all validation (error) messages
             var validationMessages = new List<string>();
-            if (!employee.DepartmentId.HasValue)
+            if (employee.DepartmentId is not null)
             {
                 validationMessages.Add("Department ID is required.");
             }
-            if (!employee.FirstName.HasValue)
+            if (employee.FirstName is not null)
             {
                 validationMessages.Add("First Name is required.");
             }
-            if (!employee.LastName.HasValue)
+            if (employee.LastName is not null)
             {
                 // An intentional bug: The validation of the last name doesn't work
 
                 //validationMessages.Add("Last Name is required.");
             }
-            if (!employee.DateOfBirth.HasValue)
+            if (employee.DateOfBirth is not null)
             {
                 validationMessages.Add("Date of Birth is required.");
             }

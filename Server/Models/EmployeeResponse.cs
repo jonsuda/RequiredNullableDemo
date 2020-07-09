@@ -16,9 +16,9 @@ namespace RequiredNullableDemo.Models
             this.LastName = employee.LastName;
             this.DateOfBirth = employee.DateOfBirth;
             this.DateOfDeath = employee.DateOfDeath;
-            if (employee.Department.HasValue)
+            if (employee.Department is not null)
             {
-                this.Department = employee.Department.Value;
+                this.Department = employee.Department;
             }
         }
 

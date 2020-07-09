@@ -2,6 +2,6 @@
 {
     public class DepartmentRequest
     {
-        public Required<string> Name { get; set; }
+        public string! Name { get; set; }
     }
 }

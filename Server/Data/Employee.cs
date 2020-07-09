@@ -30,7 +30,7 @@ namespace RequiredNullableDemo.Data
 
         public DateTime? DateOfDeath { get; set; }
 
-        public Required<Department> Department { get; set; }
+        public Department! Department { get; set; }
 
         public Employee Clone() =>
             new Employee(
