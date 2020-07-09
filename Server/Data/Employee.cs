@@ -4,8 +4,6 @@ namespace RequiredNullableDemo.Data
 {
     public class Employee
     {
-        private Department? department = null;
-
         public Employee(
             int departmentId,
             string firstName,
@@ -32,15 +30,7 @@ namespace RequiredNullableDemo.Data
 
         public DateTime? DateOfDeath { get; set; }
 
-        public Department Department
-        {
-            get => this.department ??
-                throw new InvalidOperationException(
-                    $"The value of {nameof(this.Department)} is not set.");
-            set => this.department = value;
-        }
-
-        public bool IsDepartmentSet => this.department != null;
+        public Required<Department> Department { get; set; }
 
         public Employee Clone() =>
             new Employee(

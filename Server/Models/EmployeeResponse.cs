@@ -16,9 +16,9 @@ namespace RequiredNullableDemo.Models
             this.LastName = employee.LastName;
             this.DateOfBirth = employee.DateOfBirth;
             this.DateOfDeath = employee.DateOfDeath;
-            if (employee.IsDepartmentSet)
+            if (employee.Department.HasValue)
             {
-                this.Department = employee.Department;
+                this.Department = employee.Department.Value;
             }
         }
 
