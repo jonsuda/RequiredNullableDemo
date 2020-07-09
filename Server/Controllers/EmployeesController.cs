@@ -23,7 +23,7 @@ namespace RequiredNullableDemo.Controllers
             this
             .repository
             .GetEmployees(includeDepartment)
-            .Select(x => EmployeeResponse.FromEmployee(x, includeDepartment))
+            .Select(x => (EmployeeResponse)x)
             .ToArray();
 
         public IEnumerable<EmployeeResponse> GetEmployees(
@@ -31,42 +31,37 @@ namespace RequiredNullableDemo.Controllers
             this
             .repository
             .GetEmployees(departmentId, includeDepartment)
-            .Select(x => EmployeeResponse.FromEmployee(x, includeDepartment))
+            .Select(x => (EmployeeResponse)x)
             .ToArray();
 
         public EmployeeResponse? GetEmployee(int id, bool includeDepartment) =>
-            EmployeeResponse.FromEmployee(
-                this.repository.GetEmployee(id, includeDepartment), includeDepartment);
+            this.repository.GetEmployee(id, includeDepartment);
 
         public EmployeeResponse CreateEmployee(EmployeeRequest employee)
         {
             this.ValidateEmployee(employee);
-            return EmployeeResponse.FromEmployee(
-                this.repository.CreateEmployee(
-                    new Employee(
-                        employee.DepartmentId,
-                        employee.FirstName,
-                        employee.LastName,
-                        employee.DateOfBirth,
-                        employee.DateOfDeath)),
-                true);
+            return this.repository.CreateEmployee(
+                new Employee(
+                    employee.DepartmentId,
+                    employee.FirstName,
+                    employee.LastName,
+                    employee.DateOfBirth,
+                    employee.DateOfDeath));
         }
 
         public EmployeeResponse UpdateEmployee(int id, EmployeeRequest employee)
         {
             this.ValidateEmployee(employee);
-            return EmployeeResponse.FromEmployee(
-                this.repository.UpdateEmployee(
-                    new Employee(
-                        employee.DepartmentId,
-                        employee.FirstName,
-                        employee.LastName,
-                        employee.DateOfBirth,
-                        employee.DateOfDeath)
-                    {
-                        Id = id
-                    }),
-                true);
+            return this.repository.UpdateEmployee(
+                new Employee(
+                    employee.DepartmentId,
+                    employee.FirstName,
+                    employee.LastName,
+                    employee.DateOfBirth,
+                    employee.DateOfDeath)
+                {
+                    Id = id
+                });
         }
 
         public void DeleteEmployee(int id) =>

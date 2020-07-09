@@ -5,11 +5,10 @@ namespace RequiredNullableDemo.Models
 {
     public class EmployeeResponse
     {
-        public static EmployeeResponse FromEmployee(
-            Employee employee, bool includeDepartment) =>
-            new EmployeeResponse(employee, includeDepartment);
+        public static implicit operator EmployeeResponse(Employee employee) =>
+            new EmployeeResponse(employee);
 
-        private EmployeeResponse(Employee employee, bool includeDepartment)
+        private EmployeeResponse(Employee employee)
         {
             this.Id = employee.Id;
             this.DepartmentId = employee.DepartmentId;
@@ -17,7 +16,7 @@ namespace RequiredNullableDemo.Models
             this.LastName = employee.LastName;
             this.DateOfBirth = employee.DateOfBirth;
             this.DateOfDeath = employee.DateOfDeath;
-            if (includeDepartment)
+            if (employee.IsDepartmentSet)
             {
                 this.Department = employee.Department;
             }
