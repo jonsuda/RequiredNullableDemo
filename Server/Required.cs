@@ -7,7 +7,7 @@ namespace RequiredNullableDemo
     {
         public static implicit operator T(Required<T> requiredValue) => requiredValue.Value;
 
-        public static implicit operator Required<T>(T value) => new Required<T>(value);
+        public static implicit operator Required<T>(T? value) => new Required<T>(value);
 
         public static bool operator ==(
             Required<T> requiredValue1, Required<T> requiredValue2) =>

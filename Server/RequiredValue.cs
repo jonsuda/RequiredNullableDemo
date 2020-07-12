@@ -7,7 +7,7 @@ namespace RequiredNullableDemo
     {
         public static implicit operator T(RequiredValue<T> requiredValue) => requiredValue.Value;
 
-        public static implicit operator RequiredValue<T>(T value) => new RequiredValue<T>(value);
+        public static implicit operator RequiredValue<T>(T? value) => new RequiredValue<T>(value);
 
         private readonly T? value;
 
