@@ -25,7 +25,7 @@ namespace RequiredNullableDemo
 
         public T Value =>
             this.value ??
-            throw new InvalidOperationException("Required object must have a value");
+            throw new InvalidOperationException("Required object must have a value.");
 
         public T? GetValueOrNull() => this.value;
 
