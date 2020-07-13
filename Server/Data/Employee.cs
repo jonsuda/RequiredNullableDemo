@@ -43,8 +43,8 @@ namespace RequiredNullableDemo.Data
         public Employee Clone() =>
             new Employee(
                 this.DepartmentId,
-                this.FirstName,
-                this.LastName,
+                this.FirstName.Trim(),
+                this.LastName.Trim(),
                 this.DateOfBirth,
                 this.DateOfDeath)
             {
